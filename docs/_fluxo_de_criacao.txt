@@ -1,0 +1,26 @@
+1) criar projeto no git (readme)
+2) clonar na máquina
+3) criar/copiar: 
+    .gitignore
+    .env (variáveis de ambiente e usuário e senha do banco)
+4) criar um projeto django na pasta clonada
+5) criar o app core
+    - conter template -> home, login, barra status
+6) atualiar o git (toda vez que o sistema estiver estável)
+7) rodar os primeiros migrates (criar as tabelas do sistema de gestão do django)
+    - makemigrations - cria os scripts sqls do banco de dados escolhido no projeto
+    - migrate - roda o script, ou seja, cria o banco literalmente (tabelas, ...)
+8) atualiar o git (toda vez que o sistema estiver estável)
+9) copiar a pasta utils com os decorators para dentro do projeto
+10) criar o app usuario
+    - na pasta usuario (criada pelo django)
+        - models.py -> orientação objeto (variáveis/campos) do usuário
+        - views.py -> definir quais os campos serão exibidos
+        - urls.py -> ensinar a app usuario a gerenciar os sisteminhas dentro de usuário (create, retrieve, update, delete)
+        - na pasta template (htmls) -> definir como vamos mostrar os sisteminhas do app usuario (create, retrieve, update, delete)
+    - no arquivo da pasta projeto settings.py -> adicionar o app usuário criado
+    - no arquivo da pasta projeto urls.py -> ensinar o sistema a encontrar o app usuario
+    - rodar os migrations e migrate (criar as tabelas usuários)
+    - criar o 1o usuário (shell python)
+
+11) em core/template vamos fazer os htmls basicos de acesso e home

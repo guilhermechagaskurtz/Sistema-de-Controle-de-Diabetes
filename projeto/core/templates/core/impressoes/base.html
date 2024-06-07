@@ -1,0 +1,31 @@
+{% extends "easy_pdf/base.html" %}
+{% load static %}
+
+{% block extra_style %}
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "sans-serif";
+            color: #333333;
+        }
+    </style>
+{% endblock %}
+
+{% block page_header %}
+    <table style="color: #777777;">
+        <tr style="text-align: center;">
+            <td>
+                <img src="{% static 'core/img/logoUFN_hor.jpg' %}" style="width: 180px;">
+            </td>
+        </tr>
+    </table>
+    <br>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block page_foot %}
+    Sistema TFG Online do Laboratório de Práticas da Computação UFN - https://tfgonline.lapinf.ufn.edu.br<br>
+    Página: <pdf:pagenumber />/<pdf:pagecount /> - Impresso em: {% now "SHORT_DATETIME_FORMAT" %}
+{% endblock %}
