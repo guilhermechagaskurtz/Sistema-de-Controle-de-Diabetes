@@ -1,0 +1,58 @@
+{% extends 'cliente/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	<span class="label label-info">Registros de Pesos, IMC e TMB</span>
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+		<div class="panel-body">
+		<form class="form">
+			<div class="row">
+				
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+					{% bootstrap_field form.data  %}
+				</div>			
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+					<br>
+					<button type="submit" class="btn btn-success btn-lg"  style="width: 100%;">{% bootstrap_icon 'search' %} Buscar</button>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+					<br>
+					<a href="{% url 'historico_peso_create' %}" class="btn btn-primary btn-lg">{% bootstrap_icon 'floppy-disk' %} Atualizar peso</a>
+				</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	<table class="table table-hover">
+  		<thead>
+			{% comment %} <th>Cliente</th> {% endcomment %}
+  			<th>Peso</th>
+			<th>Data</th>
+			<th class="text-center">IMC</th>
+			<th class="text-center">TMB</th>
+			<th class="text-center">Percentual gordura</th>
+		
+  			<th class="text-center">Excluir</th>
+  		</thead>
+
+  		<tbody>
+  			{% for hp in object_list %}
+				<tr>
+					{% comment %} <td>{{ hp.cliente }}</td> {% endcomment %}
+					<td>{{ hp.peso }}</td>
+					<td>{{ hp.data|date:'d/m/Y' }}</td>
+					<td class="text-center">{{ hp.imc }}</td>
+					<td class="text-center">{{ hp.tmb }}</td>
+					<td class="text-center">{{ hp.percentual_gordura|default_if_none:'Não informado' }}</td>
+					
+				    <td class="text-center">
+				          {% bootstrap_button content='' href=hp.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				    </td>
+				</tr>
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}

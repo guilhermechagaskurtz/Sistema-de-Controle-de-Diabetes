@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'cutlery' %} <span class="label label-info">ALIMENTOS</span>
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <a href="{% url 'alimento_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Cadastrar alimento</a>
+	  </div>
+	</div>
+	<table class="table table-hover">
+  		<thead>
+  			<th>Descrição</th>
+			<th>Unidade</th>
+			<th class="text-center">Calorias</th>
+			<th class="text-center">Carboidratos</th>
+			<th>Referência</th>
+  			<th class="text-center">Editar</th>
+  			<th class="text-center">Excluir</th>
+  		</thead>
+
+  		<tbody>
+  			{% for alimento in object_list %}
+				<tr>
+					<td>{{ alimento.descricao }}</td>
+					<td>{{ alimento.unidade }}</td>
+					<td class="text-center">{{ alimento.calorias }}</td>
+					<td class="text-center">{{ alimento.carboidratos }}</td>
+					<td>
+						{% if alimento.fonte %}
+							{{ alimento.fonte }}
+						{% else %}
+						<div class="btn btn-sm btn-warning">
+							Sem referência
+						</div>
+						{% endif %}	
+					</td>
+					<td class="text-center">
+				          {% bootstrap_button content='' href=alimento.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+				    </td>
+				    <td class="text-center">
+				          {% bootstrap_button content='' href=alimento.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				    </td>
+				</tr>
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}

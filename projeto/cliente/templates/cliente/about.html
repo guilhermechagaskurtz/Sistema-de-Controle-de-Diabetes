@@ -1,0 +1,50 @@
+{% extends 'cliente/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block title %}
+	{% bootstrap_icon 'question-sign' %} Sobre
+{% endblock %}
+
+
+{% block content %}
+	<center>
+	<!-- <img src="{% static 'core/img/logoLasimon.png' %}"
+         class="img-responsive"> -->
+    </center>
+
+	<h3>Projeto em parceria entre Trabalho Final de Graduação (2021) do curso Sistemas de Informação, Bolsa PROBIT-UFN (2021-2022) e Laboratório de Práticas (Ciência da Computação, Jogos Digitais e Sistemas de Informação)</h3>
+	<h4>Versão:</h4>
+	<ul>
+		<li>1.0 de Dezembro de 2021</li>
+	</ul>
+	<h4>Apoio:</h4>
+	<ul>
+		<li>Universidade Franciscana</li>
+	</ul>
+	<h4>
+		Colaboradores UFN:
+	</h4>
+	<ul> 
+		<li>Alunos:</li>
+		<ul>
+			<li>Robson Cezário - Trabalho Final de Graduação 2021</li>
+			<li>Eduardo Pavani Palharini - Bolsista PROBIT-UFN 2021-2022</li>
+		</ul>
+		<li>Professores:</li>
+		<ul>
+			<li>Alexandre Zamberlan - Orientador do TFG e do Projeto</li>
+			<li>Ana Paula Canal - Professora do Curso de Ciência da Computação</li>
+			<li>Franceliane Jobim Benedetti - Professora do Curso de Nutrição</li>
+			<li>Sylvio Garcia Vieira - Coordenador Laboratório de Práticas</li>
+		</ul>
+	</ul>
+	<h4>
+		Consultoria:
+	</h4>
+		<ul> 
+			<li><a href="http://site.ersistemas.info/" target="_blank"> Empresa ER Sistemas</a> - Robertson Ebling dos Santos (egresso do curso de Sistemas de Informação)</li>
+			<li><a href="" target="_blank">Gedson Leal Gomes</a> - Educador físico e Personal Trainer</li>
+		</ul>
+	
+{% endblock %}

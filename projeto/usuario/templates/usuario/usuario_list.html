@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+	{% bootstrap_icon 'user' %} <span class="label label-info">USUÁRIOS</span>
+{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-body">
+	  <form class="form">
+		  <div class="row">
+			  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				  {% bootstrap_field form.nome_usuario  %}
+			  </div>
+			  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+				{% bootstrap_field form.tipo  %}
+			  </div>
+			  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				  <br>
+				  <button type="submit" class="btn btn-success btn-lg"  style="width: 100%;">{% bootstrap_icon 'search' %} Buscar</button>
+			  </div>
+			  <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+				  <br>
+				  <a href="{% url 'usuario_create' %}" style="width: 100%;" class="btn btn-primary btn-lg">{% bootstrap_icon 'floppy-disk' %} Cadastrar usuário</a>
+			  </div>
+		  </div>
+	  </form>
+	</div>
+  </div>
+	<table class="table table-hover">
+  		<thead>
+			<th>Tipo</th>  
+			<th>Nome</th>
+			<th>E-mail</th>
+			<th>Celular</th>
+  			<th>Ativo</th>
+  			<th>Último acesso</th>
+  			<th class="text-center">Editar</th>
+  			<th class="text-center">Excluir</th>
+  		</thead>
+  		<tbody>
+  			{% for usuario in object_list %}
+				<tr>
+					<td>{{ usuario.tipo }}</td>
+					<td>{{ usuario.nome }}</td>
+					<td>{{ usuario.email }}</td>
+					<td>{{ usuario.fone }}</td>
+					<td>
+						{% if usuario.is_active %}
+							{% bootstrap_icon 'ok' size='sm' %}
+						{% endif %}
+					</td>
+					<td>{{ usuario.last_login|date:"d/m/Y H:i" }}</td>
+					<td class="text-center">
+				          {% bootstrap_button content='' href=usuario.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
+				    </td>
+				    <td class="text-center">
+				          {% bootstrap_button content='' href=usuario.get_delete_url button_type='link' icon='trash' button_class='btn btn-danger' size='sm' %}
+				    </td>
+				</tr>
+			{% endfor %}
+  		</tbody>
+	</table>
+{% endblock %}

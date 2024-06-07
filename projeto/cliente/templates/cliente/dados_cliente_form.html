@@ -1,0 +1,30 @@
+{% extends 'cliente/base.html' %}
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	{% bootstrap_icon 'user' %} Meus Dados
+{% endblock %}
+
+{% block content %}
+<form class="form" role="form" method="POST">
+  {% csrf_token %}
+  {% for error in form.non_field_errors %}
+    {% bootstrap_alert error 'danger' %}
+  {% endfor %}
+  
+  {% bootstrap_field form.nome %} 
+  {% bootstrap_field form.cpf|add_class:'mask_cpf' %} 
+  {% bootstrap_field form.fone|add_class:'mask_tel_celular' %}
+  {% bootstrap_field form.data_nascimento %}   
+  {% bootstrap_field form.sexo %}
+  {% bootstrap_field form.altura %}
+
+  {% buttons submit='Gravar' %}
+    <a href="javascript:history.go(-1);" class="btn btn-info" role="button">Voltar</a>
+  {% endbuttons %}
+</form>
+{% endblock %}

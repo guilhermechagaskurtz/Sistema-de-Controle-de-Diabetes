@@ -1,0 +1,22 @@
+{% extends "mail_templated/base.tpl" %}
+{% load bootstrap3 %}
+
+{% block subject %}
+    TFG Online: {{ submissao.aluno.nome }} fez atualização de submissão!!
+{% endblock %}
+
+{% block html %}
+    <p>Olá professor <strong>{{ submissao.orientador.nome }}</strong>!!<br><br>
+
+       Seu orientando {{ submissao.aluno.nome }} atualizou submissão de TFG. <br>
+       Para acompanhar, acesse o <a href="https://tfgonline.lapinf.ufn.edu.br" target="_blank">
+       TFG Online</a>
+    </p>
+    <br>
+    <p>***** MENSAGEM GERADA AUTOMATICAMENTE. NÃO RESPONDA. *****</p>
+    <hr>
+    <p><small>Desenvolvido pelo Laboratório de Práticas da Computação UFN</small></p>
+{% endblock %}
+
+
+

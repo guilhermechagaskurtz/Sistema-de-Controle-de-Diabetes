@@ -1,0 +1,30 @@
+{% extends 'cliente/base.html' %}
+{% load bootstrap3 %}
+{% load widget_tweaks %}
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	{% bootstrap_icon 'cutlery' %} Atualização de Peso
+{% endblock %}
+
+{% block content %}
+<form class="form" role="form" method="POST">
+    {% csrf_token %}
+    <!-- {{ form.non_field_errors }} -->
+    
+    {% for error in form.non_field_errors %}
+      {% bootstrap_alert error 'danger' %}
+    {% endfor %}
+    
+    {% comment %} {% bootstrap_form form %} {% endcomment %}
+    {% bootstrap_field form.data %}
+    {% bootstrap_field form.peso %}
+    {% bootstrap_field form.percentual_gordura %}
+    
+    {% buttons submit='Gravar' %}
+       <a href="javascript:history.go(-1);" class="btn btn-info" role="button">Voltar</a>
+    {% endbuttons %}
+</form>
+{% endblock %}
